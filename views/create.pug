@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	h1= title
+	// p Welcome to #{title}
+
+	form(method="POST" action="")
+		div.form-group
+			each field in fields
+				if field != "password"
+					label(for="first_name") #{field[0].toUpperCase().concat(field.slice(1))}: &nbsp
+					input(id=field).form-control(type="text" placeholder="Field for ".concat(field) name=field required="true"/* value=(undefined===author ? "" : author.first_name)*/)
+					br
+				else
+					label(for="first_name") #{field[0].toUpperCase().concat(field.slice(1))}: &nbsp
+					input#first_name.form-control(type="password" placeholder="Field for ".concat(field) name=field required="true" /*value=(undefined===author ? "" : author.first_name)*/)
+					br
+		button.btn.btn-primary(type="submit") Submit
+		if errors 
+			ul
+				for error in errors
+					li!= error.msg
