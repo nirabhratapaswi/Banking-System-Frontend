@@ -1,0 +1,7 @@
+extends layout
+
+block navigation
+	ul
+		each x in navigation_names
+			li
+				a(href=x.href) #{x.text}
