@@ -217,7 +217,7 @@ router.post("/loan/update", function(request, response, next) {
 });
 
 router.get("/payment", function(req, res, next) {
-    let fields = ["paymentamount", "loannumber"];
+    let fields = ["paymentamount", "loannumber", "accountid"];
     res.render('create', {
         title: "Payment Create",
         fields: fields,
@@ -361,8 +361,8 @@ router.get("/customer/getwithaccountsandloans/:username", function(request, resp
     });
 });
 
-router.get("/account/getwithbranchandcustomers/:accountnumber", function(request, response, next) {
-    getData("/account/getwithbranchandcustomers/".concat(request.params.accountnumber), resp => {
+router.get("/account/getwithbranchandcustomersandpayments/:accountnumber", function(request, response, next) {
+    getData("/account/getwithbranchandcustomersandpayments/".concat(request.params.accountnumber), resp => {
         console.log("Response in callback: ", JSON.stringify(resp, null, 4));
         response.write(JSON.stringify(resp.response, null, 10));
         response.end();
